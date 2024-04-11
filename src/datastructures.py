@@ -13,7 +13,29 @@ class FamilyStructure:
         self.last_name = last_name
 
         # example list of members
-        self._members = []
+        self._members = [
+            {
+                "first_name" : "John",
+                "last_name" : "Jackson",
+                "id" : self._generateId(),
+                "age" : 33,
+                "lucky_numbers" : [7, 13, 22]
+            },
+            {
+                "first_name" : "Jane",
+                "last_name" : "Jackson",
+                "id" : self._generateId(),
+                "age" : 35,
+                "lucky_numbers" : [10, 14, 3]
+            },
+            {
+                "first_name" : "Jimmy",
+                "last_name" : "Jackson",
+                "id" : self._generateId(),
+                "age" : 5,
+                "lucky_numbers" : [7, 13, 22]
+            }
+            ]
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
@@ -21,10 +43,23 @@ class FamilyStructure:
 
     def add_member(self, member):
         # fill this method and update the return
-        pass
+        member_to_add = {
+            "first_name" : member['first_name'],
+            "last_name" : member['last_name'],
+            "age" : member['age'],
+            "lucky_numbers" : member['lucky_numbers'],
+            "id" : self._generateId()
+        }
+        self._members.append(member_to_add)
+        print(member_to_add)
+        return member_to_add
 
     def delete_member(self, id):
-        # fill this method and update the return
+        # fill this method and update the return         
+        member_to_delete = self._members.remove(id)
+        print(member_to_delete)    
+        self._members.pop(member_to_delete)
+        print(self._members)
         pass
 
     def get_member(self, id):
